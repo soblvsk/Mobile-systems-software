@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PetrolPrice</string>
+    <string name="textView1">Количество бензина</string>
+    <string name="textView2">Марка бензина</string>
+    <string name="radioButton1">92 50 руб.</string>
+    <string name="radioButton2">95 55 руб.</string>
+    <string name="radioButton3">98 57 руб.</string>
+    <string name="buttonOk">ОК</string>
+    <string name="totalCost">Итог</string>
 </resources>

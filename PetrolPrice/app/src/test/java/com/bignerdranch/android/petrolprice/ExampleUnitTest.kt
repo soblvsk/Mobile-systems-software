@@ -1,4 +1,4 @@
-package com.example.petrolprice
+package com.bignerdranch.android.petrolprice
 
 import org.junit.Test
 
