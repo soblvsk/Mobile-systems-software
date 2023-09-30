@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
             id.petrol92 -> 50.0
             id.petrol95 -> 55.0
             id.petrol98 -> 57.0
+            id.petrol100 -> 60.0
             else -> 0.0
         }
 

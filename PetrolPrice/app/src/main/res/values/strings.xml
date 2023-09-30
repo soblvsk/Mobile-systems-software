@@ -5,6 +5,7 @@
     <string name="radioButton1">92 50 руб.</string>
     <string name="radioButton2">95 55 руб.</string>
     <string name="radioButton3">98 57 руб.</string>
+    <string name="radioButton4">100 60 руб.</string>
     <string name="buttonOk">ОК</string>
     <string name="totalCost">Итог</string>
 </resources>
