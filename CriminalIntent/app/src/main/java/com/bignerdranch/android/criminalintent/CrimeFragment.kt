@@ -10,6 +10,10 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import java.util.UUID
+
+import android.R.id
+import java.util.Date
 
 
 class CrimeFragment: Fragment() {
@@ -20,7 +24,11 @@ class CrimeFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        crime = Crime()
+        crime = Crime(
+            id = UUID.randomUUID(),
+            title = "",
+            date = Date(),
+            isSolved = false)
     }
 
     override fun onCreateView(
