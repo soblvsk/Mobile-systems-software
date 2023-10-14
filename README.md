@@ -2,7 +2,7 @@
 
 Projects from the course on "Mobile and Embedded Systems Software"
 
-## 🔨 Deploy
+## 🔨 Projects
 
 - [GeoQuiz](https://github.com/soblvsk/Mobile-systems-software/tree/main/GeoQuiz)
 - [PetrolPrice](https://github.com/soblvsk/Mobile-systems-software/tree/main/PetrolPrice)
