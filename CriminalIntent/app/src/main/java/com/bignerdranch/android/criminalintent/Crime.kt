@@ -7,7 +7,10 @@ import java.util.Date
 import java.util.UUID
 
 @Entity
-data class Crime(@PrimaryKey val id: UUID,
-                 var title: String,
-                 var date: Date,
-                 var isSolved: Boolean)
+data class Crime(
+    @PrimaryKey
+    var id: UUID = UUID.randomUUID(),
+    var title: String = "",
+    var date: Date = Date(),
+    var isSolved: Boolean = false
+)

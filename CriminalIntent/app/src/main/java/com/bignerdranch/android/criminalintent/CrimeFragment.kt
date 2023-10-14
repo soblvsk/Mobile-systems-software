@@ -33,11 +33,7 @@ class CrimeFragment: Fragment(), DatePickerFragment.Callbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        crime = Crime(
-            id = UUID.randomUUID(),
-            title = "",
-            date = Date(),
-            isSolved = false)
+        crime = Crime()
 
         val crimeId: UUID = arguments?.getSerializable(ARG_CRIME_ID) as UUID
         crimeDetailViewModel.loadCrime(crimeId)
