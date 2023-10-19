@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface FlickrApi {
     @GET("/")
-    fun fetchPhotos(): Call<String>
+    fun fetchContents(): Call<String>
 }
