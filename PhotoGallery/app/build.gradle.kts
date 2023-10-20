@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.work:work-runtime:2.8.1")
     implementation("com.squareup.picasso:picasso:2.8")
     implementation("androidx.lifecycle:lifecycle-extensions:2.0.0")
     implementation("com.google.code.gson:gson:2.8.5")
