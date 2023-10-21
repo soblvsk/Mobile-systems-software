@@ -1,5 +1,6 @@
 package com.bignerdranch.android.photogallery
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 
+import android.content.Intent
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -18,6 +20,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
@@ -25,6 +28,8 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.bignerdranch.android.photogallery.api.FlickrApi
+import com.bignerdranch.android.photogallery.database.PhotoDatabase
+import com.bignerdranch.android.photogallery.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,6 +45,7 @@ class PhotoGalleryFragment : Fragment() {
 
     private lateinit var photoGalleryViewModel: PhotoGalleryViewModel
     private lateinit var photoRecyclerView: RecyclerView
+    private lateinit var db: PhotoDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +54,12 @@ class PhotoGalleryFragment : Fragment() {
 
         photoGalleryViewModel = ViewModelProviders.of(this)
             .get(PhotoGalleryViewModel::class.java)
+
+
+        db = Room.databaseBuilder(
+            requireContext(),
+            PhotoDatabase::class.java, "photo-db"
+        ).build()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -90,6 +102,28 @@ class PhotoGalleryFragment : Fragment() {
         return when (item.itemId) {
             R.id.menu_item_clear -> {
                 photoGalleryViewModel.fetchPhotos("")
+                true
+            }
+            R.id.menu_item_view_db -> {
+                activity?.let{
+                    val intent = Intent(it, PhotoListActivity::class.java)
+                    it.startActivity(intent)
+                }
+                true
+            }
+            R.id.menu_item_delete_all -> {
+                Thread {
+                    val photos = db.photoDao().getAll()
+                    for (photo in photos) {
+                        db.photoDao().deletePhoto(photo)
+                    }
+                    val remainingPhotos = db.photoDao().getAll()
+                    if (remainingPhotos.isEmpty()) {
+                        Log.d("Database", "All photos have been deleted.")
+                    } else {
+                        Log.d("Database", "Some photos were not deleted.")
+                    }
+                }.start()
                 true
             }
             R.id.menu_item_toggle_polling -> {
@@ -164,6 +198,13 @@ class PhotoGalleryFragment : Fragment() {
                 .load(galleryItem.url)
                 .placeholder(R.drawable.bill_up_close)
                 .into(holder.bindImageView)
+
+            holder.itemView.setOnClickListener {
+                val photo = Photo(0, galleryItem.url, galleryItem.title)
+                Thread {
+                    db.photoDao().addPhoto(photo)
+                }.start()
+            }
         }
     }
 
