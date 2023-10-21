@@ -14,4 +14,12 @@
     <item android:id="@+id/menu_item_toggle_polling"
         android:title="@string/start_polling"
         app:showAsAction="ifRoom|withText" />
+
+    <item android:id="@+id/menu_item_view_db"
+        android:title="@string/db_view"
+        app:showAsAction="ifRoom|withText" />
+
+    <item android:id="@+id/menu_item_delete_all"
+        android:title="@string/db_deleteAll"
+        app:showAsAction="ifRoom|withText" />
 </menu>
