@@ -1,6 +1,5 @@
 package com.bignerdranch.android.todolist.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -10,8 +9,8 @@ import com.bignerdranch.android.todolist.ToDoList
 @Dao
 interface ToDoListDao {
 
-    @Query("SELECT * FROM ToDoList ORDER BY priority DESC")
-    fun getAll(): LiveData<List<ToDoList>>
+    @Query("SELECT * FROM ToDoList ORDER BY priority ASC")
+    fun getAll(): List<ToDoList>
 
     @Insert
     fun addTask(task: ToDoList)
