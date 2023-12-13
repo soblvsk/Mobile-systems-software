@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="high_priority">#FF0000</color>
+    <color name="medium_priority">#FFA500</color>
+    <color name="low_priority">#FFFF00</color>
 </resources>
