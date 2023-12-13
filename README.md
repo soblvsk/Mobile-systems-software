@@ -8,6 +8,7 @@ Projects from the course on "Mobile and Embedded Systems Software"
 - [PetrolPrice](https://github.com/soblvsk/Mobile-systems-software/tree/main/PetrolPrice)
 - [CriminalIntent](https://github.com/soblvsk/Mobile-systems-software/tree/main/CriminalIntent)
 - [PhotoGallery](https://github.com/soblvsk/Mobile-systems-software/tree/main/PhotoGallery)
+- [ToDoList](https://github.com/soblvsk/Mobile-systems-software/tree/main/ToDoList)
 
 ## 👀 Author
 
